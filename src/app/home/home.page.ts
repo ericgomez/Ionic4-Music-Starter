@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  slideOpts = {
+    initialSlide: 0,
+    slidesPerView: 1, // un slide po vista
+    centeredSlides: true, // centrado
+    speed: 400 // Velocidad de trancicion
+  };
+
   constructor() {}
 
 }
