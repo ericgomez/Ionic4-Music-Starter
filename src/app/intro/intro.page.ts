@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-intro',
@@ -33,9 +35,16 @@ export class IntroPage implements OnInit {
     icon: "bicycle",
   }]
 
-  constructor() { }
+  constructor(private router: Router, private storage: Storage) { }
 
-  ngOnInit() {
+  finish() {
+    this.storage.set('isIntroShowed', true); // Si ya se mostro el intro esscribimos la variable como true
+    this.router.navigateByUrl('/home');
+  }
+
+  async ngOnInit() {
+    // Creamos la Base de Datos
+    await this.storage.create();
   }
 
 }
