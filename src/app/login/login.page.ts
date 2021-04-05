@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
@@ -39,7 +40,7 @@ export class LoginPage implements OnInit {
 
   errorMessage: string = ''
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticateService, private navCtrl: NavController) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthenticateService, private navCtrl: NavController, private storage: Storage) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         '',
@@ -58,11 +59,17 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  async ngOnInit() { 
+    // Creamos la Base de Datos
+    await this.storage.create();
+  }
 
   loginUser(credentials) {
     this.authService.loginUser(credentials).then(res => {
       this.errorMessage='';
+
+      this.storage.set('isUserLoggedIn', true)
+
       this.navCtrl.navigateForward('/home')
     }).catch(error => {
       this.errorMessage = error
