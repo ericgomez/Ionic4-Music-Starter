@@ -1,15 +1,29 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IntroGuard implements CanActivate {
-  canActivate(
+
+  constructor(private storage: Storage, private router: Router) {}
+
+  async canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    state: RouterStateSnapshot): Promise<boolean | UrlTree> {
+    
+    // Creamos la Base de Datos
+    await this.storage.create();
+
+    const isIntroShowed = await this.storage.get('isIntroShowed'); // Obtenemos el valor de la Variable isIntroShowed de nuestro Storage
+    
+    if(isIntroShowed){ // En caso de que el valor sea verdadero
+      return true;
+    } else { // En caso que sea falso redireccionamos a la pagina intro
+      this.router.navigateByUrl('/intro');
+    }
+
   }
   
 }
