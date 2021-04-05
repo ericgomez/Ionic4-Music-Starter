@@ -64,6 +64,8 @@ export class LoginPage implements OnInit {
     this.authService.loginUser(credentials).then(res => {
       this.errorMessage='';
       this.navCtrl.navigateForward('/home')
+    }).catch(error => {
+      this.errorMessage = error
     })
   }
 }
