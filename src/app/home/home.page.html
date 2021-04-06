@@ -7,5 +7,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>Este es el home y esta vacío</h1>  
+  <h1>Artistas</h1>
+    <ion-slides [options]="slideOps" *ngIf="artists.length">
+        <ion-slide *ngFor="let artist of artists">
+            <ion-avatar>
+                <img src="https://via.placeholder.com/150"/>
+                <span>Nombre del artista</span>
+            </ion-avatar>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
