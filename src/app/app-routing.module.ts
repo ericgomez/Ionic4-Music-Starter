@@ -5,14 +5,6 @@ import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canActivate:[
-      LoginGuard,// El usuario solo podra navegar al Home solo si el LoginGuard retorna veradero 
-      IntroGuard,// El usuario solo podra navegar al Home solo si el IntroGuard retorna veradero
-    ] 
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -28,6 +20,14 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule),
+    canActivate:[
+      LoginGuard,// El usuario solo podra navegar al Home solo si el LoginGuard retorna veradero 
+      IntroGuard,// El usuario solo podra navegar al Home solo si el IntroGuard retorna veradero
+    ] 
   },
 ];
 
