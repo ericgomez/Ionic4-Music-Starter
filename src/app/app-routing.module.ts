@@ -29,6 +29,10 @@ const routes: Routes = [
       IntroGuard,// El usuario solo podra navegar al Home solo si el IntroGuard retorna veradero
     ] 
   },
+  {
+    path: 'songs-modal',
+    loadChildren: () => import('./songs-modal/songs-modal.module').then( m => m.SongsModalPageModule)
+  },
 ];
 
 @NgModule({

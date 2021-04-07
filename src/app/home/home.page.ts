@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { SpotifyMusicService } from '../services/spotify-music.service';
+import { SongsModalPage } from '../songs-modal/songs-modal.page'
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,7 @@ export class HomePage {
     speed: 400 // Velocidad de transicion
   };
 
-  constructor(private musicService: SpotifyMusicService) {}
+  constructor(private musicService: SpotifyMusicService, private modalController: ModalController) {}
 
   //Ciclo de vida componente
   // Este metodo se ejecuta una vez se a entrado exitosamente a la vista, sea ejecutado el contructor y el HTML esta cargado
@@ -37,6 +39,21 @@ export class HomePage {
       // Asignamos lo que nos devuelve el backend a nuestra variable de albums por medio de un filtro 
       this.albums = newReleases.albums.items.filter(e => e.album_type == "album")     
     })
+  }
+
+  async showSongs(artist) {
+    const songs = await this.musicService.getArtistsTopTracks(artist.id)
+    
+    // Creat un Modal
+    const modal = await this.modalController.create({
+      component: SongsModalPage,
+      componentProps: {
+        songs: songs.tracks,
+        artist: artist.name
+      }
+    })
+    // Mostramos el modal
+    modal.present();
   }
 
 }
