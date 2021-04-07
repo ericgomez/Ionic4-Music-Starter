@@ -13,6 +13,7 @@ export class HomePage {
   artists: any[] = [];
   songs: any[] = [];
   albums: any[] = [];
+  song: any = {}
 
   // Le inidcamos al slider por medio de las [options] las caracteriticas que va a tener
   slideOps = {
@@ -53,8 +54,13 @@ export class HomePage {
         artist: artist.name
       }
     })
+    
+    modal.onDidDismiss().then(dataReturned=>{
+      this.song = dataReturned.data;
+    })
+
     // Mostramos el modal
-    modal.present();
+    return await modal.present();
   }
 
 }
