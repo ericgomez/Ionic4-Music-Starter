@@ -39,7 +39,7 @@ export class IntroPage implements OnInit {
 
   finish() {
     this.storage.set('isIntroShowed', true); // Si ya se mostro el intro esscribimos la variable como true
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/login');
   }
 
   async ngOnInit() {
