@@ -63,4 +63,13 @@ export class HomePage {
     return await modal.present();
   }
 
+  /* Controles del reproductor */
+  play() {
+    this.song.playing = true;
+  }
+
+  pause() {
+    this.song.playing = false;
+  }
+
 }
