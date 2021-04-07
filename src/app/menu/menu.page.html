@@ -14,7 +14,7 @@
     <ion-list>
       <ion-item><ion-icon name="home-outline" slot="start"></ion-icon>Home</ion-item>
       <ion-item><ion-icon name="bicycle-outline" slot="start"></ion-icon>Sport</ion-item>
-      <ion-item><ion-icon name="settings-outline" slot="start"></ion-icon>Settings</ion-item>
+      <ion-item (click)="goToSettings()"><ion-icon name="settings-outline" slot="start"></ion-icon>Settings</ion-item>
       <ion-item (click)="logout()"><ion-icon name="log-out-outline" color="primary" slot="start"></ion-icon>Exit</ion-item>
     </ion-list>
   </ion-content>

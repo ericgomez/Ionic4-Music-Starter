@@ -24,4 +24,8 @@ export class MenuPage implements OnInit {
     this.storage.remove('isUserLoggedIn') // Pasamo la variable a false
     this.navCtrl.navigateRoot('/login')
   }
+
+  goToSettings() {
+    this.navCtrl.navigateRoot('menu/settings')
+  }
 }
