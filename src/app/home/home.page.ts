@@ -14,6 +14,8 @@ export class HomePage {
   songs: any[] = [];
   albums: any[] = [];
   song: any = {}
+  currentSong: any = {}
+  newTime
 
   // Le inidcamos al slider por medio de las [options] las caracteriticas que va a tener
   slideOps = {
@@ -65,11 +67,41 @@ export class HomePage {
 
   /* Controles del reproductor */
   play() {
+    this.currentSong = new Audio(this.song.preview_url)
+    //Iniciamos la canción
+    this.currentSong.play()
+
+    // Obtenemos el tiempo de la canción por medio de metodo timeupdate
+    this.currentSong.addEventListener("timeupdate", () => {
+      // le asignamos el valor a la variable newTime
+      this.newTime = (this.currentSong.currentTime / this.currentSong.duration) //Realizamos la conversión para que scroll vaya acorde a la cancion
+    })
+
     this.song.playing = true;
   }
 
   pause() {
+    // Pausamos la canción
+    this.currentSong.pause()
+
     this.song.playing = false;
+  }
+
+  parseTime(time="0:00") {
+    if (time) {
+      const partTime = parseInt(time.toString().split('.')[0], 10)
+      let minutes = Math.floor(partTime/60).toString()
+      if (minutes.length == 1) {
+        minutes = '0' + minutes
+      }
+
+      let seconds = (partTime%60).toString()
+      if (seconds.length == 1) {
+        seconds = '0' + seconds
+      }
+
+      return minutes + ':' + seconds
+    }
   }
 
 }
