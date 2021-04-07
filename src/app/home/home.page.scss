@@ -1,3 +1,14 @@
 ion-avatar{
   height: 130px;
+  img {
+  height: 70px;
+  width: 90px;
+  }
+  span {
+  font-size: 12px;
+  }
+  // Darle en la forma cuadrada a las imagenes
+  &.squared-avatar {
+    --border-radius: 0;
+  }
 }
