@@ -1,4 +1,4 @@
-# Ionic 4 Music App starter
+# Curso de Ionic 4
 
 [![Build Status](https://travis-ci.org/seagomezar/Ionic4-Music-Starter.svg?branch=master)](https://travis-ci.org/seagomezar/Ionic4-Music-Starter)
 ![](https://img.shields.io/github/stars/seagomezar/Ionic4-Music-Starter)
@@ -6,6 +6,13 @@
 ![](https://img.shields.io/github/tag/seagomezar/Ionic4-Music-Starter)
 ![](https://img.shields.io/github/release/seagomezar/Ionic4-Music-Starter)
 ![](https://img.shields.io/github/issues/seagomezar/Ionic4-Music-Starter)
+
+#### Proyecto del curso
+
+![proyect](https://static.platzi.com/media/landing-projects/Proyecto-Ionic.png)
+
+## Platzi Music
+Desarrolla Platzi Music una aplicación de música en la que aprendes todas las funcionalidades de Ionic y cómo trabajarlo desde cero, sólamente con bases de Agular, esta aplicación tiene la capacidad de buscar artistas, mostrarte favoritos, reproducir fragmentos de tu canción reales directo del API de Spotify, además, crear tu perfil implementando acceso a la cámara con capacitor e igualmente generar una vista sport que trackea tu recorrido y te permite reproducir música desde ahí accediendo al GPS.
 
 ## How to use this starter?
 
